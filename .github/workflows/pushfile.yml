@@ -12,13 +12,15 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
 
+    
     - name: Pushes test folder
-      uses: nkoppel/push-files-to-another-repository@1.1.0
-      env:
-        API_TOKEN_GITHUB: ${{secrets.key }}
+    - uses: actions/checkout@v2.3.4
+    - uses: GuillaumeFalourd/copy-push-files@v1
       with:
-        source_file: './.github/workflows/copy.yml'
-        destination_repo: 'sreesar/project'
-        destination_folder: 'project/.github/workflows/'
-        user_email: 'ninanarmatha0389@gmail.com'
-        user_name: 'sreesar'
+          email: ninanarmatha0389@gmail.com
+          name: sreesar
+          commit_message: push the file
+          target_branch: main
+          source_files: ./.github/workflows/copy.yml
+          remote_repository: https://github.com/sreesar/project.git
+          access_token: ${{ secrets.key }}
