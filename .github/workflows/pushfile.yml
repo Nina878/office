@@ -1,0 +1,24 @@
+name: Push File
+
+on: 
+ workflow_dispatch: {}
+ push:
+  branches: 
+   - main
+jobs:
+  copy-file:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Pushes test folder
+      uses: dmnemec/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.key }}
+      with:
+        source_file: './.github/workflows/copy.yml'
+        destination_repo: 'sreesar/project'
+        destination_folder: 'project/.github/workflows/'
+        user_email: 'ninanarmatha0389@gmail.com'
+        user_name: 'sreesar'
