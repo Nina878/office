@@ -9,11 +9,10 @@ jobs:
   copy-file:
     runs-on: ubuntu-latest
     steps:
-     
-    - name: Pushes test folder
-    - uses: actions/checkout@v2.3.4
-    - uses: GuillaumeFalourd/copy-push-files@v1
-      with:
+      - name: Pushes test folder
+      - uses: actions/checkout@v2.3.4
+      - uses: GuillaumeFalourd/copy-push-files@v1
+        with:
           email: ninanarmatha0389@gmail.com
           name: sreesar
           commit_message: push the file
