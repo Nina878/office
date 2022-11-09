@@ -15,7 +15,7 @@ jobs:
     - name: Pushes test folder
       uses: dmnemec/copy_file_to_another_repo_action@main
       env:
-        API_TOKEN_GITHUB: ${{ key }}
+        API_TOKEN_GITHUB: ${{secret.key }}
       with:
         source_file: './.github/workflows/copy.yml'
         destination_repo: 'sreesar/project'
