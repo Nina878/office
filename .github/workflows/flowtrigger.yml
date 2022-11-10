@@ -1,25 +1,17 @@
-name: Get latest release version
-on:
-  schedule:
-    - cron:  '0 10 * * *'
+name: trigger workflow
+ workflow: {}
+
+on: [push, workflow_dispatch]
 jobs:
-  get-version:
+  trigger:
     runs-on: ubuntu-latest
+    name: "Trigger Project Test"
     steps:
-      - uses: actions/checkout@v2
-        with:
-          token: ${{ secrets.key }}
-      - name: Fetch release version
-        run: |
-          curl -sL https://api.github.com/repos/swagger-api/swagger-ui/releases/latest | \
-          jq -r ".tag_name" > release-versions/swagger-ui-latest.txt
-      - name: Check for modified files
-        id: git-check
-        run: echo ::set-output name=modified::$([ -z "`git status --porcelain`" ] && echo "false" || echo "true")
-      - name: Commit latest release version
-        if: steps.git-check.outputs.modified == 'true'
-        run: |
-          git config --global user.name 'sreesar'
-          git config --global user.email 'ninanarmatha0389@gmail.com'
-          git commit -am "New release version"
-          git push
+    - uses: passeidireto/trigger-external-workflow-action@main
+      env:
+        PAYLOAD_AUTHOR: ${{ github.author }}
+        PAYLOAD_REVISION: "3"
+      with:
+        repository: my-org/my-repo
+        event: doc_update
+        github_pat: ${{ secrets.pat_with_access }}
