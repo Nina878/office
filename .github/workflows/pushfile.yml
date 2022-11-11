@@ -20,5 +20,5 @@ jobs:
           commit_message: push the file
           target_branch: main
           source_files: ./docker-compose.txt
-          remote_repository: https://github.com/sreesar/project.git
+          remote_repository: https://github.com/sreesar/project
           access_token: ${{ secrets.ACTIONS_KEY }}
