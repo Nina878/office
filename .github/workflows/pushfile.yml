@@ -19,6 +19,6 @@ jobs:
           name: ${{ github.actor }}
           commit_message: push the file
           target_branch: main
-          source_files: ./copy.yml
+          source_files: ./docker-compose.txt
           remote_repository: https://github.com/sreesar/project.git
           access_token: ${{ secrets.KEY }}
