@@ -1,5 +1,4 @@
 name: Push File
-
 on: 
  workflow_dispatch: {}
  push:
@@ -14,8 +13,7 @@ jobs:
      
       - name: Pushes test folder
         uses: GuillaumeFalourd/copy-push-files@v1
-      
-      
+           
         with:
           email: ninanarmatha0389@gmail.com
           name: ${{ github.actor }}
@@ -23,4 +21,4 @@ jobs:
           target_branch: main
           source_files: ./copy.yml
           remote_repository: https://github.com/sreesar/project.git
-          access_token: ${{ secrets.key }}
+          access_token: ${{ secrets.KEY }}
