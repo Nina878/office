@@ -1,0 +1,50 @@
+name: build container
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+    - main
+jobs:
+  build_test:
+    name: Build, Test, Artifact results
+    runs-on: ubuntu-latest
+    container: docker pull ghcr.io/sreesar/project:latest
+    steps:
+    # Code checkout from develop branch
+      - name: TypeScript Checkout
+        uses: actions/checkout@v1
+
+      - name: Archive TypeScript Package
+        uses: actions/upload-artifact@v2
+        with:
+          name: tslib-1.0.0.tgz
+          path: |
+            ts/tslib/tslib-1.0.0.tgz
+     
+      - name: Pre-request for unit test case
+        run: cp -r ts/tslib/src ts/tests/
+      # Execute the unit testcases
+      - name: Unit testing
+        run: |
+          cd ts/tests
+          npm install 
+          npm test
+          npm run coverage
+          
+      # Archiving the generated artifact using the typescript
+      - name: Archive TypeScript Package
+        uses: actions/upload-artifact@v2
+        with:
+          name: Coverage report for test
+          path: |
+            ts/tests/coverage/lcov-report/index.html
+
+# this notification will send irrespective of build status
+      - name: Notify Teams
+        if: always()
+        uses: jdcargile/ms-teams-notification@v1.3
+        with:
+          github-token: ${{ github.token }} # this will use the runner's token.
+          ms-teams-webhook-uri: ${{ secrets.MSTEAMS_WEBHOOK }}
+          notification-summary: "GitHub Action build result: ${{ job.status }}"
+
