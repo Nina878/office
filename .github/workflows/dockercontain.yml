@@ -21,8 +21,7 @@ jobs:
           path: |
             ts/tslib/tslib-1.0.0.tgz
      
-      - name: Pre-request for unit test case
-        run: cp -r ts/tslib/src ts/tests/
+      
       # Execute the unit testcases
       - name: Unit testing
         run: |
