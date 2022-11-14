@@ -8,7 +8,7 @@ jobs:
   build_test:
     name: Build, Test, Artifact results
     runs-on: ubuntu-latest
-    container: docker pull ghcr.io/sreesar/project:latest
+    container: ghcr.io/sreesar/project:latest
     steps:
     # Code checkout from develop branch
       - name: TypeScript Checkout
