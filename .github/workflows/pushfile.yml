@@ -11,7 +11,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
      
-      - name: Pushes test folder
+      - name: Copy file repo B to repo A
         uses: GuillaumeFalourd/copy-push-files@v1
            
         with:
@@ -20,5 +20,5 @@ jobs:
           commit_message: push the file
           target_branch: main
           source_files: ./docker-compose.txt
-          remote_repository: https://github.com/sreesar/project
+          remote_repository: https://github.com/sreesar/myown
           access_token: ${{ secrets.ACTIONS_KEY }}
