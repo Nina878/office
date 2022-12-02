@@ -1,0 +1,11 @@
+Name:  Workflow Reuse code
+
+on:
+   pull_request:
+    branches: main
+  jobs:
+  call-workflow-passing-data:
+    uses: sreesar/pr_triggered/.github/workflows/build.yml@main
+    with:
+      config-path: .github/labeler.yml
+    secrets: inherit
