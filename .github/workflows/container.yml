@@ -1,7 +1,7 @@
 name: Container
 on:
- push:
-   branches: [main]
+  push:
+    branches: [main]
 jobs:
   container-test-job:
     runs-on: ubuntu-latest
@@ -15,7 +15,7 @@ jobs:
        volumes:
         - my_docker_volume:/volume_mount
         
-       steps:
+    steps:
           - name: Check for dockerenv file
             run: (ls /.dockerenv && echo Found dockerenv )
    
