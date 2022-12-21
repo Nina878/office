@@ -1,8 +1,29 @@
- - name: build and deploy    
-      run: |
-          ng build
-          git clone https://.:${{ secrets.API_TOKEN_GITHUB }}@github.com/project/office.git
-          copy dist
-          git add public/client/dist
-          git commit -m "Automatic deploy of dist"
-          git push target [branch_name]
+name: CI
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+jobs:
+  
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+
+      - name: Run a one-line script
+        run: echo Hi, world!
+
+      # Runs a set of commands using the runners shell
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+                    
+      - uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+        with:
+          nupkg-path:  './artifacts/*.nupkg'
+          repo-owner:  'tanaka-takayoshi'
+          gh-user:  'tanaka-takayoshi'
+          token:  ${{ secrets.GITHUB_TOKEN }}
