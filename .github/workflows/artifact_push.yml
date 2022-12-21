@@ -20,7 +20,7 @@ jobs:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
         source_files: 'my-artifact1'
-        destination_repo: 'sreesar/project/artifact'
+        destination_repo: 'https://github.com/sreesar/project.git'
         destination_folder: 'artifact'
         user_email: 'ninanarmatha0389@gmail.com'
         user_name: 'sreesar'
