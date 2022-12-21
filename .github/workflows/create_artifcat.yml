@@ -7,21 +7,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-   
-    - name: 'Build Artifact file'
-      uses: actions/upload-artifact@v3
-      with:
-       name: my-artifact1
-       path: Dockerfile
-       retention-days: 5
-  #  - name: Download artifact from build
-   #   uses: bettermarks/action-artifact-download@0.3.0
-   #   with:
-    #    repo: sreesar/office
-    #    token: ${{ secrets.GITHUB_TOKEN }}
-      #  artifact_name: my-artifact1
-     #   rename: new-artifact    
-      #  wait_seconds: 60
         
         
     - name: Download artifact
@@ -29,7 +14,7 @@ jobs:
       uses: dawidd6/action-download-artifact@v2
       with:
         github_token: ${{secrets.GITHUB_TOKEN}}
-        workflow: create_artifact.yml
+        workflow: artifact_push.yml
         workflow_conclusion: success
         branch: main
        # Optional, defaults to all types
@@ -37,7 +22,7 @@ jobs:
         # Optional, will use specified workflow run
        
     # Optional, run number from the workflow
-        run_number: 4
+        run_number: 17
         name: my-artifact1
         path: sreesar/office/.
     # Optional, defaults to current repo
