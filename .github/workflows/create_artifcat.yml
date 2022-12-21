@@ -38,6 +38,7 @@ jobs:
        
     # Optional, run number from the workflow
         run_number: 4
+        name: my-artifact1
         path: sreesar/office/.
     # Optional, defaults to current repo
         repo: ${{ github.repository }}
