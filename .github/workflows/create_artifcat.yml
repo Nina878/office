@@ -28,7 +28,18 @@ jobs:
     # Optional, defaults to current repo
         repo: ${{ github.repository }}
         check_artifacts:  false
-    
         search_artifacts: false
         skip_unpack: false
         if_no_artifact_found: fail
+        
+    - name: Pushes test file
+      uses: antoineVIVIES/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+      with:
+        source_files: 'my-artifact1'
+        destination_repo: 'sreesar/project'
+        destination_folder: './'
+        user_email: 'ninanarmatha0389@gmail.com'
+        user_name: 'sreesar'
+        commit_message: 'Artifact file push to project repo'
