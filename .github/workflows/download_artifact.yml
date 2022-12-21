@@ -1,0 +1,42 @@
+name: Artifcate_create
+on: push 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+     
+    - name: Download artifact
+      id: download-artifact
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        workflow: artifact_create.yml
+        workflow_conclusion: success
+        branch: main
+        run_number: 3
+        name: my-artifact1
+        path: sreesar/sample1/.
+    # Optional, defaults to current repo
+        repo: ${{ github.repository }}
+        check_artifacts:  false
+        search_artifacts: false
+        skip_unpack: false
+        if_no_artifact_found: fail
+        
+    - name: check files 
+      run: ls -alr && tree
+        
+    - name: Pushes test file
+      uses: antoineVIVIES/copy_file_to_another_repo_action@main
+      env:
+        API_TOKEN_GITHUB: ${{ secrets.ACTIONSKEY }}
+      with:
+        source_files: 'sreesar/office/docker-compose.txt'
+        destination_repo: 'sreesar/project'
+        destination_folder: 'artifact/.'
+        user_email: 'ninanarmatha0389@gmail.com'
+        user_name: 'sreesar'
+        commit_message: 'Artifact file push to project repo'
