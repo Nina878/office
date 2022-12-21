@@ -15,15 +15,12 @@ jobs:
       - name: Run a one-line script
         run: echo Hi, world!
 
-      # Runs a set of commands using the runners shell
-      - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-                    
-      - uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
+                       
+      - name: Download artifact from build
+        uses: bettermarks/action-artifact-download@0.3.0
         with:
-          nupkg-path:  './office'
-          repo-owner:  'sreesar'
-          gh-user:  'sreesar'
-          token:  ${{ secrets.GITHUB_TOKEN }}
+         repo: sreesar/office
+         token: ${{ secrets.GITHUB_TOKEN }}
+         artifact_name: my-artifact
+         rename: new-artifact-name    
+         wait_seconds: 60
