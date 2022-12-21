@@ -12,5 +12,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
        name: my-artifact1
-       path: artifact/office.txt
+       path: Dockerfile
        retention-days: 5
