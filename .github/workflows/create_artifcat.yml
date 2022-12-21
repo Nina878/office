@@ -12,4 +12,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
        name: my-artifact1
-       path: my_file.txt
+       path: artifact/office.txt
+       retention-days: 5
