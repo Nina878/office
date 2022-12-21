@@ -22,3 +22,29 @@ jobs:
         artifact_name: my-artifact1
         rename: new-artifact    
         wait_seconds: 60
+        
+        
+    - name: Download artifact
+      id: download-artifact
+      uses: dawidd6/action-download-artifact@v2
+      with:
+        github_token: ${{secrets.GITHUB_TOKEN}}
+        workflow: create_artifact.yml
+        workflow_conclusion: success
+        pr: ${{github.event.pull_request.number}}
+        commit: ${{github.event.pull_request.head.sha}}
+        branch: main
+       # Optional, defaults to all types
+        event: push
+        # Optional, will use specified workflow run
+        run_id: 3747996999
+    # Optional, run number from the workflow
+        run_number: 4
+        path: sreesar/office
+    # Optional, defaults to current repo
+        repo: ${{ github.repository }}
+        check_artifacts:  false
+    
+        search_artifacts: false
+        skip_unpack: false
+        if_no_artifact_found: fail
