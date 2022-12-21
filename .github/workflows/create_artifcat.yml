@@ -35,7 +35,7 @@ jobs:
        # Optional, defaults to all types
         
         # Optional, will use specified workflow run
-        run_id: 3747996999
+       
     # Optional, run number from the workflow
         run_number: 4
         path: sreesar/office/.
