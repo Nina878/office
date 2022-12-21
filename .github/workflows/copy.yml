@@ -23,7 +23,7 @@ jobs:
                     
       - uses: tanaka-takayoshi/nuget-publish-to-github-packages-action@v2.1
         with:
-          nupkg-path:  './artifacts/*.nupkg'
-          repo-owner:  'tanaka-takayoshi'
-          gh-user:  'tanaka-takayoshi'
+          nupkg-path:  './office'
+          repo-owner:  'sreesar'
+          gh-user:  'sreesar'
           token:  ${{ secrets.GITHUB_TOKEN }}
