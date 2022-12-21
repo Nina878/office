@@ -32,6 +32,9 @@ jobs:
         skip_unpack: false
         if_no_artifact_found: fail
         
+    - name: check files 
+      run: ls -alr
+        
     - name: Pushes test file
       uses: antoineVIVIES/copy_file_to_another_repo_action@main
       env:
