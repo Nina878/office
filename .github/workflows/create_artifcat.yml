@@ -14,3 +14,11 @@ jobs:
        name: my-artifact1
        path: Dockerfile
        retention-days: 5
+    - name: Download artifact from build
+      uses: bettermarks/action-artifact-download@0.3.0
+      with:
+        repo: sreesar/office
+        token: ${{ secrets.GITHUB_TOKEN }}
+        artifact_name: my-artifact1
+        rename: new-artifact    
+        wait_seconds: 60
