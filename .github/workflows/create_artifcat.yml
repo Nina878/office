@@ -37,7 +37,7 @@ jobs:
       env:
         API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
       with:
-        source_files: 'my-artifact1'
+        source_files: './my-artifact1'
         destination_repo: 'sreesar/project'
         destination_folder: './'
         user_email: 'ninanarmatha0389@gmail.com'
