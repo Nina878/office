@@ -1,0 +1,15 @@
+name: Artifcate_create
+on: push 
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+   
+    - name: 'Build Artifact file'
+      uses: actions/upload-artifact@v3
+      with:
+       name: my-artifact1
+       path: my_file.txt
