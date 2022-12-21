@@ -14,17 +14,7 @@ jobs:
        name: my-artifact1
        path: my_file.txt
        retention-days: 5
-    - name: Pushes test file
-      uses: antoineVIVIES/copy_file_to_another_repo_action@main
-      env:
-        API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-      with:
-        source_files: 'my-artifact1'
-        destination_repo: 'sreesar/project'
-        destination_folder: 'artifact'
-        user_email: 'ninanarmatha0389@gmail.com'
-        user_name: 'sreesar'
-        commit_message: 'Artifact file push to project repo'
+  
   
         
         
