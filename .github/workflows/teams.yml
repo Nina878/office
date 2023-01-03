@@ -1,0 +1,17 @@
+name: notification
+on:
+  workflow_dispatch: {}
+  
+jobs:
+  greeting_job:
+   name: MS-TEAMS
+   runs-on: ubuntu-latest
+   steps:
+    - name: Notify dedicated teams channel
+      uses: sreesar/teams@main
+      with:
+          github-token: ${{ github.token }} # this will use the runner's token.
+          ms-teams-webhook-uri: ${{ secrets.MS_TEAMS_WEBHOOK_URI }}
+          notification-summary: Your custom notification message 
+          notification-color: 17a2b8 
+          timezone: America/Denver
