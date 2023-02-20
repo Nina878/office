@@ -1,0 +1,9 @@
+name: samplecode
+on:
+ push:
+jobs:
+  sample:
+  runs-on: ubuntu-latest
+  steps:
+   - name: install npm
+     run: install npm
