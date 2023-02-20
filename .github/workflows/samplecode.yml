@@ -1,9 +1,13 @@
 name: samplecode
-on:
- push:
+on: [push]
 jobs:
-  sample:
-  runs-on: ubuntu-latest
-  steps:
-   - name: install npm
-     run: install npm
+  hello_world_job:
+    runs-on: ubuntu-latest
+    name: test job
+    steps:
+      - name: github code check out
+        uses: actions/checkout@v2
+       
+     
+      - name: install npm
+        run: npm install @playwright/test
